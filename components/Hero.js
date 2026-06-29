@@ -47,8 +47,8 @@ export default function Hero() {
 
             <div className="mt-3">
               <p className="text-base text-black md:text-lg">
-                AI <span className="text-gray-500">\</span> Software Engineer{' '}
-                <span className="text-gray-500">\</span> Content Creator
+                Data Analyst <span className="text-gray-500">\</span> Mobile Developer{' '}
+                <span className="text-gray-500">\</span> Web Developer
               </p>
             </div>
 
