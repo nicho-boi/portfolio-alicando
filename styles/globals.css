@@ -11,3 +11,9 @@ body {
 }
 
 .container { @apply max-w-4xl mx-auto px-4; }
+
+@layer components {
+  .bento-card {
+    @apply rounded-2xl border border-gray-200/80 bg-white/80 shadow-[0_1px_2px_rgba(0,0,0,0.03)] backdrop-blur-sm;
+  }
+}

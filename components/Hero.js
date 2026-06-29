@@ -19,7 +19,7 @@ export default function Hero() {
             <div className="flex items-start justify-between gap-4 pt-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-xl font-extrabold tracking-normal text-black md:text-2xl">
+                  <h1 className="text-2xl font-extrabold tracking-normal text-black md:text-21xl">
                     Jesper Nicho Alicando
                   </h1>
                   <span
