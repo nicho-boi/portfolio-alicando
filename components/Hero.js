@@ -1,11 +1,13 @@
 import Image from 'next/image'
 
-export default function Hero() {
+export default function Hero({ theme, toggleTheme }) {
+  const isDark = theme === 'dark'
+
   return (
     <section className="py-5">
       <div className="container">
         <div className="flex flex-col gap-4 md:flex-row md:items-start">
-          <div className="relative h-36 w-full shrink-0 overflow-hidden bg-gray-100 md:h-[170px] md:w-[160px]">
+          <div className={`relative h-36 w-full shrink-0 overflow-hidden md:h-[170px] md:w-[160px] ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}>
             <Image
               src="/finalpic.jpg"
               alt="Jesper Nicho Alicando"
@@ -19,7 +21,7 @@ export default function Hero() {
             <div className="flex items-start justify-between gap-4 pt-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-2xl font-extrabold tracking-normal text-black md:text-21xl">
+                  <h1 className={`text-2xl font-bold tracking-normal md:text-3xl ${isDark ? 'text-white' : 'text-black'}`}>
                     Jesper Nicho Alicando
                   </h1>
                   <span
@@ -30,7 +32,7 @@ export default function Hero() {
                   </span>
                 </div>
 
-                <p className="mt-1 flex items-center gap-2 text-sm text-black">
+                <p className={`mt-1 flex items-center gap-2 text-sm ${isDark ? 'text-gray-300' : 'text-black'}`}>
                   <LocationIcon />
                   <span>Ozamiz City, Philippines</span>
                 </p>
@@ -39,23 +41,25 @@ export default function Hero() {
               <button
                 type="button"
                 aria-label="Toggle theme"
-                className="hidden h-7 w-12 items-center justify-center border border-gray-300 bg-gray-200 text-gray-800 md:inline-flex"
+                aria-pressed={isDark}
+                onClick={toggleTheme}
+                className={`hidden h-7 w-12 items-center justify-center border md:inline-flex ${isDark ? 'border-gray-700 bg-gray-800 text-gray-200' : 'border-gray-300 bg-gray-200 text-gray-800'}`}
               >
-                <SunIcon />
+                {isDark ? <MoonIcon /> : <SunIcon />}
               </button>
             </div>
 
             <div className="mt-3">
-              <p className="text-base text-black md:text-lg">
-                Data Analyst <span className="text-gray-500">\</span> Mobile Developer{' '}
-                <span className="text-gray-500">\</span> Web Developer
+              <p className={`text-base md:text-lg ${isDark ? 'text-gray-200' : 'text-black'}`}>
+                Data Analyst <span className={isDark ? 'text-gray-500' : 'text-gray-500'}>\</span> Mobile Developer{' '}
+                <span className={isDark ? 'text-gray-500' : 'text-gray-500'}>\</span> Web Developer
               </p>
             </div>
 
             <div className="mt-4 grid gap-2 md:grid-cols-[160px_145px_1fr]">
               <a
-                href="#contact"
-                className="inline-flex h-9 items-center justify-start gap-2 whitespace-nowrap bg-black px-3 text-sm font-bold text-white"
+                href="mailto:jesperalicando01@gmail.com?subject=Schedule%20a%20Call"
+                className={`inline-flex h-9 items-center justify-start gap-2 whitespace-nowrap px-3 text-sm font-bold ${isDark ? 'bg-white text-gray-900' : 'bg-black text-white'}`}
               >
                 <span className="flex w-4 shrink-0 items-center justify-center">
                   <CalendarIcon />
@@ -65,8 +69,8 @@ export default function Hero() {
               </a>
 
               <a
-                href="mailto:you@example.com"
-                className="inline-flex h-9 items-center justify-start gap-2 whitespace-nowrap border border-gray-100 bg-white px-3 text-sm font-semibold text-black shadow-sm"
+                href="mailto:jesperalicando01@gmail.com"
+                className={`inline-flex h-9 items-center justify-start gap-2 whitespace-nowrap border px-3 text-sm font-semibold shadow-sm ${isDark ? 'border-gray-700 bg-gray-900 text-gray-100' : 'border-gray-100 bg-white text-black'}`}
               >
                 <span className="flex w-4 shrink-0 items-center justify-center">
                   <MailIcon />
@@ -76,7 +80,7 @@ export default function Hero() {
 
               <a
                 href="#about"
-                className="inline-flex h-9 items-center justify-between gap-2 whitespace-nowrap border border-gray-100 bg-white px-3 text-sm font-semibold text-black shadow-sm"
+                className={`inline-flex h-9 items-center justify-between gap-2 whitespace-nowrap border px-3 text-sm font-semibold shadow-sm ${isDark ? 'border-gray-700 bg-gray-900 text-gray-100' : 'border-gray-100 bg-white text-black'}`}
               >
                 <span className="inline-flex items-center gap-2">
                   <span className="flex w-4 shrink-0 items-center justify-center">
@@ -116,6 +120,14 @@ function SunIcon() {
     <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 4V2m0 20v-2m8-8h2M2 12h2m13.7-5.7 1.4-1.4M4.9 19.1l1.4-1.4m0-11.4L4.9 4.9m14.2 14.2-1.4-1.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

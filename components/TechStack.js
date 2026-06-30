@@ -1,21 +1,67 @@
-export default function TechStack(){
+import { useState } from 'react'
+
+export default function TechStack({ isDark, compact }) {
+  const [showAll, setShowAll] = useState(false)
   const stacks = {
-    Frontend: ['JavaScript','TypeScript','React','Next.js','Vue.js','Tailwind CSS'],
-    Backend: ['Node.js','Python','PHP','Laravel','PostgreSQL','MongoDB'],
-    DevOps: ['AWS','Docker','Kubernetes','GitHub Actions']
+    Frontend: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Tailwind CSS'],
+    Backend: ['Node.js', 'Python', 'PHP', 'Laravel', 'PostgreSQL', 'MongoDB'],
+    'Design & Tools': ['Figma', 'Adobe XD', 'Sketch', 'Zeplin'],
+    'DevOps & Cloud': ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions'],
+  }
+
+  const wrapperClasses = isDark ? 'border-gray-800 bg-gray-900/80 text-gray-100' : 'border-gray-200 bg-white text-gray-900'
+  const chipClasses = isDark ? 'bg-white text-gray-300' : 'bg-white text-gray-700'
+  const titleClasses = isDark ? 'text-gray-100' : 'text-gray-900'
+  const subtitleClasses = isDark ? 'text-gray-400' : 'text-gray-600'
+
+  if (compact) {
+    return (
+      <div className={`rounded-2xl border p-4 ${wrapperClasses}`}>
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className={`text-xs uppercase tracking-[0.12em] ${subtitleClasses}`}>Stack</p>
+            <h2 className="text-xl font-bold">Tech Stack</h2>
+          </div>
+          <button
+            type="button"
+            className={`text-xs font-semibold transition ${isDark ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
+            onClick={() => setShowAll((current) => !current)}
+          >
+            {showAll ? 'Show Less' : 'View All'}
+          </button>
+        </div>
+
+        <div className="mt-4 space-y-4">
+          {Object.entries(stacks).map(([k, v]) => (
+            <div key={k}>
+              <h3 className={`mb-2 text-sm font-semibold uppercase tracking-[0.1em] ${titleClasses}`}>{k}</h3>
+              <div className="flex flex-wrap gap-2">
+                {(showAll ? v : v.slice(0, 4)).map((item) => (
+                  <span key={item} className={`inline-flex items-center justify-center rounded-full px-2.5 py-1 text-xs ${chipClasses}`}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   return (
     <section id="tech" className="py-10">
       <div className="container">
         <h2 className="text-2xl font-bold">Tech Stack</h2>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {Object.entries(stacks).map(([k,v])=> (
-            <div key={k} className="p-4 border rounded">
-              <h3 className="font-semibold">{k}</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {v.map(item=> (
-                  <span key={item} className="px-3 py-1 border rounded text-sm">{item}</span>
+        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+          {Object.entries(stacks).map(([k, v]) => (
+            <div key={k} className={`rounded-2xl p-4 ${wrapperClasses}`}>
+              <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.1em] text-gray-500">{k}</h3>
+              <div className="flex flex-wrap gap-2">
+                {v.slice(0, 4).map((item) => (
+                  <span key={item} className={`inline-flex items-center justify-center rounded-full px-2.5 py-1 text-xs ${chipClasses}`}>
+                    {item}
+                  </span>
                 ))}
               </div>
             </div>
