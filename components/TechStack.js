@@ -10,7 +10,7 @@ export default function TechStack({ isDark, compact }) {
   }
 
   const wrapperClasses = isDark ? 'border-gray-800 bg-gray-900/80 text-gray-100' : 'border-gray-200 bg-white text-gray-900'
-  const chipClasses = isDark ? 'bg-white text-gray-300' : 'bg-white text-gray-700'
+  const chipClasses = isDark ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-700'
   const titleClasses = isDark ? 'text-gray-100' : 'text-gray-900'
   const subtitleClasses = isDark ? 'text-gray-400' : 'text-gray-600'
 

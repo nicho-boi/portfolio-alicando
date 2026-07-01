@@ -54,10 +54,10 @@ export default function Home() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className={`bento-card p-4 md:col-span-1 space-y-2 group animate-fade-in ${isDark ? 'border-gray-800 bg-gray-900/80' : 'border-gray-200/80 bg-white/80'}`}>
                 <h2 className="text-lg font-bold">About</h2>
-                <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  I’m a multi-skilled tech professional who turns data into insight and ideas into impactful digital products. As a Data Analyst, Mobile Developer, and Web Developer, I build solutions that are not only functional, but also thoughtful, user-focused, and ready to make an impact.
+                <p className={`text-sm leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                  I’m a multi-skilled tech professional who turns data into insight and ideas into impactful digital products. As a Data Analyst, Mobile Developer, Web Developer, and website designer, I build solutions that are not only functional, but also thoughtful, user-focused, and ready to make an impact.
                 </p>
-                <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                <p className={`text-sm leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   I enjoy solving real-world problems through clean code, smart analysis, and a strong eye for user experience—bringing both technical depth and business value to every project.
                 </p>
               </div>
