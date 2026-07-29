@@ -2,6 +2,10 @@ import { useState } from 'react'
 
 export default function Gallery({ isDark }) {
   const images = [
+    { src: '/gallery/%20(1).JPEG' },
+    { src: '/gallery/%20(1).jpg' },
+    { src: '/gallery/%20(2).jpg' },
+    { src: '/gallery/%20(3).jpg' },
     { src: '/gallery/1.jpg' },
     { src: '/gallery/2.jpg' },
     { src: '/gallery/3.jpg' },
