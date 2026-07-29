@@ -3,10 +3,11 @@ import { useState } from 'react'
 export default function TechStack({ isDark, compact }) {
   const [showAll, setShowAll] = useState(false)
   const stacks = {
-    Frontend: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Tailwind CSS'],
-    Backend: ['Node.js', 'Python', 'PHP', 'Laravel', 'PostgreSQL', 'MongoDB'],
-    'Design & Tools': ['Figma', 'Adobe XD', 'Sketch', 'Zeplin'],
-    'DevOps & Cloud': ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions'],
+    Frontend: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'CSS'],
+    Mobile: ['Flutter', 'Dart', 'Kotlin', 'Swift'],
+    Backend: ['Python', 'FastAPI', 'Node.js'],
+    AI: ['GPT', 'Gemini', 'GitHub Copilot', 'Claude'],
+    'Tools & Deployment': ['Vercel', 'Cloudflare', 'GitHub', 'Git', 'Figma', 'Canva'],
   }
 
   const wrapperClasses = isDark ? 'border-gray-800 bg-gray-900/80 text-gray-100' : 'border-gray-200 bg-white text-gray-900'

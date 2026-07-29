@@ -1,15 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Projects({ isDark }) {
   const items = [
-    { title: 'CodeCred', desc: 'Online certifications for programmers', link: 'https://codecred.dev', img: '/gallery-1.svg' },
-    { title: 'BASE404', desc: 'Online coding bootcamp', link: 'https://base-404.com', img: '/gallery-2.svg' },
-    { title: 'DIIN.PH', desc: 'AI-powered wardrobe assistant', link: 'https://diin.ph', img: '/gallery-3.svg' },
+    {
+      title: 'Attack on Titan Guide Web App',
+      desc: 'Flutter web app for exploring characters, Titans, favorites, and a Scout quiz',
+      shortDesc: 'Anime guide',
+      link: 'https://aot-wiki.vercel.app/',
+      img: '/project banner (1600 x 800 px).png',
+    },
+    { title: 'Foresight',
+      desc: 'AI image manipulation timeline analyzer with lightweight forensic signal reporting', 
+      shortDesc: 'Image forensics',
+      link: 'https://foren-sight-seven.vercel.app/', 
+      img: '/Foresight.png' 
+    },
+    { title: 'SunnyBooth', desc: 'Digital photo booth for capturing, customizing, and sharing memorable moments', shortDesc: 'Photo booth', link: 'https://sunnybooth.vercel.app/', img: '/SunnyBoothbanner.png' },
   ]
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [transitionKey, setTransitionKey] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const resumeTimerRef = useRef(null)
   const activeProject = items[activeIndex]
 
   useEffect(() => {
@@ -19,18 +32,55 @@ export default function Projects({ isDark }) {
     return () => window.clearTimeout(timer)
   }, [isTransitioning])
 
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const timer = window.setInterval(() => {
+      setIsTransitioning(true)
+      setTransitionKey((prev) => prev + 1)
+      setActiveIndex((activeIndex) => (activeIndex === items.length - 1 ? 0 : activeIndex + 1))
+    }, 4000)
+
+    return () => window.clearInterval(timer)
+  }, [isAutoPlaying, items.length])
+
   const changeProject = (nextIndex) => {
     setIsTransitioning(true)
     setTransitionKey((prev) => prev + 1)
     setActiveIndex(nextIndex)
   }
 
+  const pauseAutoPlay = () => {
+    setIsAutoPlaying(false)
+
+    if (resumeTimerRef.current) {
+      window.clearTimeout(resumeTimerRef.current)
+    }
+
+    resumeTimerRef.current = window.setTimeout(() => {
+      setIsAutoPlaying(true)
+    }, 8000)
+  }
+
+  const changeProjectManually = (nextIndex) => {
+    pauseAutoPlay()
+    changeProject(nextIndex)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) {
+        window.clearTimeout(resumeTimerRef.current)
+      }
+    }
+  }, [])
+
   const goToPrevious = () => {
-    changeProject((activeIndex) => (activeIndex === 0 ? items.length - 1 : activeIndex - 1))
+    changeProjectManually((activeIndex) => (activeIndex === 0 ? items.length - 1 : activeIndex - 1))
   }
 
   const goToNext = () => {
-    changeProject((activeIndex) => (activeIndex === items.length - 1 ? 0 : activeIndex + 1))
+    changeProjectManually((activeIndex) => (activeIndex === items.length - 1 ? 0 : activeIndex + 1))
   }
 
   const shellClasses = isDark ? 'border-gray-800 bg-gray-900/80' : 'border-gray-200/80 bg-white/80'
@@ -75,8 +125,8 @@ export default function Projects({ isDark }) {
               }`}
             >
               <a href={activeProject.link} className="block">
-                <div className={`flex h-48 w-full items-center justify-center overflow-hidden rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}>
-                  <img src={activeProject.img} alt={activeProject.title} className="h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                <div className={`aspect-[2/1] w-full overflow-hidden rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}>
+                  <img src={activeProject.img} alt={activeProject.title} className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" />
                 </div>
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">{activeProject.title}</h3>
@@ -90,7 +140,7 @@ export default function Projects({ isDark }) {
                 <button
                   key={p.title}
                   type="button"
-                  onClick={() => changeProject(index)}
+                  onClick={() => changeProjectManually(index)}
                   className={`w-full rounded-xl border p-3 text-left transition ${
                     index === activeIndex
                       ? isDark
@@ -104,7 +154,7 @@ export default function Projects({ isDark }) {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <p className={`font-semibold ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>{p.title}</p>
-                      <p className={`text-sm ${mutedText}`}>{p.desc}</p>
+                      <p className={`text-sm ${mutedText}`}>{p.shortDesc || p.desc}</p>
                     </div>
                     <span className={`text-sm ${softMutedText}`}>{index + 1}</span>
                   </div>

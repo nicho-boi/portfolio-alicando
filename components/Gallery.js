@@ -2,14 +2,13 @@ import { useState } from 'react'
 
 export default function Gallery({ isDark }) {
   const images = [
-    { src: '/gallery-1.svg' },
-    { src: '/gallery-2.svg' },
-    { src: '/gallery-3.svg' },
-    { src: '/gallery-4.svg' },
-    { src: '/gallery-1.svg' },
-    { src: '/gallery-2.svg' },
-    { src: '/gallery-3.svg' },
-    { src: '/gallery-4.svg' },
+    { src: '/gallery/1.jpg' },
+    { src: '/gallery/2.jpg' },
+    { src: '/gallery/3.jpg' },
+    { src: '/gallery/4.jpg' },
+    { src: '/gallery/5.jpg' },
+    { src: '/gallery/6.jpg' },
+    { src: '/gallery/7.jpg' },
   ]
 
   const pageSize = 5
@@ -60,7 +59,7 @@ export default function Gallery({ isDark }) {
                 className={`overflow-hidden rounded-3xl bg-transparent transition duration-200 ${isDark ? 'bg-gray-950' : 'bg-white'}`}
               >
                 <div className={`flex h-28 items-center justify-center p-2 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-                  <img src={item.src} alt={`Gallery item ${page * pageSize + index + 1}`} className="h-full w-full object-contain" />
+                  <img src={item.src} alt={`Gallery item ${page * pageSize + index + 1}`} className="h-full w-full object-cover" />
                 </div>
               </div>
             ))}

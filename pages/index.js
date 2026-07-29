@@ -30,18 +30,14 @@ export default function Home() {
 
   const isDark = theme === 'dark'
   const [showAllCerts, setShowAllCerts] = useState(false)
+  const [selectedCert, setSelectedCert] = useState(null)
 
   const certificateList = [
-    { title: 'Huawei Developer Expert', issuer: 'Huawei', src: '/gallery-1.svg' },
-    { title: 'Generative AI Leader', issuer: 'Google', src: '/gallery-2.svg' },
-    { title: 'Software Engineering', issuer: 'TestDome', src: '/gallery-3.svg' },
-    { title: 'Generative AI Professional', issuer: 'Oracle', src: '/gallery-4.svg' },
-    { title: 'Data Analysis Essentials', issuer: 'Skills Academy', src: '/gallery-1.svg' },
-    { title: 'Full Stack Web Development', issuer: 'Udemy', src: '/gallery-2.svg' },
-    { title: 'Cloud Fundamentals', issuer: 'AWS', src: '/gallery-3.svg' },
-    { title: 'Kubernetes Essentials', issuer: 'CNCF', src: '/gallery-4.svg' },
-    { title: 'React Developer', issuer: 'Meta', src: '/gallery-1.svg' },
-    { title: 'Data Visualization', issuer: 'Tableau', src: '/gallery-2.svg' },
+    { title: 'Flutter & Dart', issuer: 'Mobile Development', src: '/flutterdartcert.jpg' },
+    { title: 'Data Analytics', issuer: 'Analytics', src: '/Data Analytics Cert-1.png' },
+    { title: 'Cyber Security', issuer: 'Security', src: '/Cyber Security Cert-1.png' },
+    { title: 'Intellectual Property', issuer: 'IP Fundamentals', src: '/Intellectual Property Cert-1.png' },
+    { title: 'Game Development', issuer: 'Game Design', src: '/Game Cert-1.png' },
   ]
 
   return (
@@ -55,10 +51,8 @@ export default function Home() {
               <div className={`bento-card p-4 md:col-span-1 space-y-2 group animate-fade-in ${isDark ? 'border-gray-800 bg-gray-900/80' : 'border-gray-200/80 bg-white/80'}`}>
                 <h2 className="text-lg font-bold">About</h2>
                 <p className={`text-sm leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  I’m a multi-skilled tech professional who turns data into insight and ideas into impactful digital products. As a Data Analyst, Mobile Developer, Web Developer, and website designer, I build solutions that are not only functional, but also thoughtful, user-focused, and ready to make an impact.
-                </p>
-                <p className={`text-sm leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  I enjoy solving real-world problems through clean code, smart analysis, and a strong eye for user experience—bringing both technical depth and business value to every project.
+                  I build modern digital solutions, and these days I am focused on generative AI. I care about clean execution, clear structure, and polished user experiences that feel practical and easy to use.
+                  I enjoy turning complex problems into practical systems through clean code, strong analysis, and careful product thinking, bringing technical depth and business value to every project.
                 </p>
               </div>
 
@@ -123,10 +117,9 @@ export default function Home() {
                 </div>
 
                 <div className="mt-4 space-y-2">
-                  <CertItem title="Huawei Developer Expert" issuer="Huawei" />
-                  <CertItem title="Generative AI Leader" issuer="Google" />
-                  <CertItem title="Software Engineering" issuer="TestDome" />
-                  <CertItem title="Generative AI Professional" issuer="Oracle" />
+                  {certificateList.map((cert) => (
+                    <CertItem key={cert.title} title={cert.title} issuer={cert.issuer} onClick={() => setSelectedCert(cert)} isDark={isDark} />
+                  ))}
                 </div>
               </div>
 
@@ -156,7 +149,12 @@ export default function Home() {
               <div className="mt-6 max-h-[64vh] overflow-auto pr-2">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {certificateList.map((cert) => (
-                    <div key={cert.title} className={`overflow-hidden rounded-3xl border p-6 ${isDark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}>
+                    <button
+                      key={cert.title}
+                      type="button"
+                      onClick={() => setSelectedCert(cert)}
+                      className={`overflow-hidden rounded-3xl border p-6 text-left transition hover:-translate-y-1 hover:shadow-lg ${isDark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}
+                    >
                       <div className={`flex h-44 items-center justify-center rounded-3xl ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
                         <img src={cert.src} alt={cert.title} className="h-full w-full object-contain" />
                       </div>
@@ -164,9 +162,33 @@ export default function Home() {
                         <p className="text-sm font-semibold">{cert.title}</p>
                         <p className="text-xs text-gray-500">{cert.issuer}</p>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {selectedCert && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4 py-6 backdrop-blur-sm">
+            <div className={`w-full max-w-4xl rounded-3xl border p-4 shadow-2xl ${isDark ? 'border-gray-800 bg-gray-950 text-gray-100' : 'border-gray-200 bg-white text-gray-900'}`}>
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-lg font-bold">{selectedCert.title}</h2>
+                  <p className="text-sm text-gray-500">{selectedCert.issuer}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedCert(null)}
+                  className={`h-10 w-10 rounded-full border text-lg transition ${isDark ? 'border-gray-700 bg-gray-900 text-gray-200 hover:bg-gray-800' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-100'}`}
+                  aria-label="Close certificate preview"
+                >
+                  X
+                </button>
+              </div>
+              <div className={`flex max-h-[72vh] items-center justify-center overflow-hidden rounded-2xl ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+                <img src={selectedCert.src} alt={selectedCert.title} className="max-h-[72vh] w-full object-contain" />
               </div>
             </div>
           </div>
