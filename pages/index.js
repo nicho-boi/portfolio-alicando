@@ -66,7 +66,7 @@ export default function Home() {
                       <h3 className="text-sm font-semibold text-blue-600 transition-colors">Software Developer Intern</h3>
                       <div className="flex items-center justify-between gap-2">
                         <span className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Department of Education (DepEd) – Ozamiz City</span>
-                        <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-mono ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>2025</span>
+                        <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-mono ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>2026</span>
                       </div>
                     </div>
                   </div>
