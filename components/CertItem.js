@@ -3,15 +3,16 @@ export default function CertItem({ title, issuer, onClick, isDark }) {
     <button
       type="button"
       onClick={onClick}
-      className={`flex w-full items-center justify-between rounded-2xl px-3 py-3 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
-        isDark ? 'bg-gray-950 text-gray-100' : 'bg-gray-50 text-gray-900'
+      className={`grid w-full gap-2 py-1 text-left transition sm:grid-cols-[150px_1fr_auto] sm:items-start sm:gap-6 ${
+        isDark ? 'text-gray-100 hover:text-white' : 'text-gray-900 hover:text-gray-950'
       }`}
     >
-      <div>
-        <p className={`text-sm font-semibold ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>{title}</p>
-        <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{issuer}</p>
+      <p className={`text-xs font-medium ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{issuer}</p>
+      <div className="min-w-0">
+        <p className={`text-base font-semibold leading-tight ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>{title}</p>
+        <p className={`mt-1 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>Preview certificate</p>
       </div>
-      <span className="text-sm text-gray-400">{'>'}</span>
+      <span className="hidden text-sm text-gray-400 sm:block">{'>'}</span>
     </button>
   )
 }

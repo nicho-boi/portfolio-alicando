@@ -6,14 +6,52 @@ html, body, #__next {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-white text-gray-900 antialiased;
 }
 
-.container { @apply max-w-4xl mx-auto px-4; }
+.container { @apply max-w-3xl mx-auto px-4 sm:px-6; }
 
 @layer components {
   .bento-card {
-    @apply rounded-2xl border border-gray-200/80 bg-white/80 shadow-[0_1px_2px_rgba(0,0,0,0.03)] backdrop-blur-sm;
+    @apply rounded-xl border border-gray-200 bg-white shadow-sm backdrop-blur-sm;
   }
+
+  .section-title {
+    @apply text-2xl font-light tracking-tight sm:text-3xl;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.22em];
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  animation: marquee-left 70s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 70s linear infinite;
 }
