@@ -14,6 +14,7 @@ export const projects = [
     link: 'https://aot-wiki.vercel.app/',
     img: '/project banner (1600 x 800 px).png',
     stack: ['Flutter', 'Dart', 'Web'],
+    mobilePreview: true,
   },
   {
     title: 'Foresight',

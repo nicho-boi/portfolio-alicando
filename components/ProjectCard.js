@@ -4,8 +4,36 @@ export default function ProjectCard({ project, isDark }) {
   const imagePanelClass = isDark ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-gray-50'
   const mutedText = isDark ? 'text-gray-400' : 'text-gray-500'
   const chipClass = isDark ? 'border-gray-700 bg-gray-900 text-gray-300' : 'border-gray-200 bg-white text-gray-500'
+  const openProject = (event) => {
+    if (!project.link) return
+
+    event.preventDefault()
+
+    if (project.mobilePreview) {
+      const width = 430
+      const height = 820
+      const left = Math.max(0, window.screenX + (window.outerWidth - width) / 2)
+      const top = Math.max(0, window.screenY + (window.outerHeight - height) / 2)
+
+      window.open(
+        project.link,
+        `${project.title.replace(/\W+/g, '')}Preview`,
+        `noopener,noreferrer,width=${width},height=${height},left=${left},top=${top}`
+      )
+      return
+    }
+
+    window.open(project.link, '_blank', 'noopener,noreferrer')
+  }
   const CardTag = project.link ? 'a' : 'div'
-  const cardProps = project.link ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' } : {}
+  const cardProps = project.link
+    ? {
+        href: project.link,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        onClick: openProject,
+      }
+    : {}
 
   return (
     <CardTag
@@ -41,7 +69,7 @@ export default function ProjectCard({ project, isDark }) {
         <div className={`mt-auto border-t pt-4 ${borderClass}`}>
           {project.link ? (
             <span className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              View Project <span className="transition-transform group-hover:translate-x-1">{'>'}</span>
+              {project.mobilePreview ? 'Mobile Preview' : 'View Project'} <span className="transition-transform group-hover:translate-x-1">{'>'}</span>
             </span>
           ) : (
             <span className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
