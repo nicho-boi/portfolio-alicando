@@ -51,9 +51,8 @@ export default function Hero({ theme, toggleTheme }) {
             </div>
 
             <div className="mt-5">
-              <p className={`max-w-2xl text-base italic leading-7 sm:text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                Generative AI Engineer <span className={isDark ? 'text-gray-500' : 'text-gray-500'}>\</span> Mobile & Web Developer{' '}
-                <span className={isDark ? 'text-gray-500' : 'text-gray-500'}>\</span> Data Analyst
+              <p className={`max-w-2xl text-base leading-7 sm:text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                Automation Specialist & AI Workflow Engineer
               </p>
             </div>
 

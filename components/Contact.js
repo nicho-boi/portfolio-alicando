@@ -23,7 +23,7 @@ export default function Contact({ isDark }) {
           <div className="space-y-5">
             <h2 className={`section-title ${isDark ? 'text-white' : 'text-gray-950'}`}>Let's work together.</h2>
             <p className={`max-w-xl text-base leading-8 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              Available for freelance development, generative AI integrations, data analysis, and polished web experiences. I am open to helping teams turn ideas into clear, practical digital solutions.
+              Available for AI automation, workflow integrations, web scraping, API-connected systems, and data-driven tools that help teams save time and work more efficiently.
             </p>
           </div>
 

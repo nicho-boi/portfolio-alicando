@@ -1,4 +1,6 @@
 import {
+  SiAirtable,
+  SiBaserow,
   SiCanvas,
   SiClaude,
   SiCloudflare,
@@ -10,23 +12,60 @@ import {
   SiGit,
   SiGithub,
   SiGithubcopilot,
+  SiGmail,
   SiGooglegemini,
+  SiGooglesheets,
   SiHtml5,
   SiJavascript,
+  SiMake,
+  SiN8N,
   SiNextdotjs,
   SiOpenaigym,
   SiOpenapiinitiative,
   SiPython,
+  SiRailway,
   SiReact,
+  SiScrapy,
+  SiSelenium,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
   SiVite,
+  SiZapier,
 } from 'react-icons/si'
-import { FaNodeJs, FaRegFileExcel } from 'react-icons/fa'
-import { TbMessageChatbotFilled, TbSettingsSpark, TbSparkles } from 'react-icons/tb'
+import { FaNodeJs, FaRegFileExcel, FaSpider } from 'react-icons/fa'
+import { TbApi, TbMessageChatbotFilled, TbSettingsSpark, TbSparkles } from 'react-icons/tb'
 
 export const technologyGroups = [
+  {
+    title: 'AI Automation',
+    items: [
+      { name: 'n8n', Icon: SiN8N, color: 'text-pink-500' },
+      { name: 'Make', Icon: SiMake, color: 'text-purple-500' },
+      { name: 'Zapier', Icon: SiZapier, color: 'text-orange-500' },
+      { name: 'GoHighLevel', Icon: TbSettingsSpark, color: 'text-blue-500' },
+      { name: 'Retell AI', Icon: TbMessageChatbotFilled, color: 'text-violet-500' },
+      { name: 'Airtable', Icon: SiAirtable, color: 'text-yellow-500' },
+      { name: 'Baserow', Icon: SiBaserow, color: 'text-emerald-500' },
+      { name: 'Supabase', Icon: SiSupabase, color: 'text-emerald-500' },
+      { name: 'Web Scraping', Icon: FaSpider, color: 'text-indigo-500' },
+      { name: 'APIs', Icon: TbApi, color: 'text-cyan-500' },
+    ],
+  },
+  {
+    title: 'Featured Build Stack',
+    items: [
+      { name: 'n8n Automation', Icon: SiN8N, color: 'text-pink-500' },
+      { name: 'Google Gemini', Icon: SiGooglegemini, color: 'text-blue-500' },
+      { name: 'Claude', Icon: SiClaude, color: 'text-orange-500' },
+      { name: 'Supabase', Icon: SiSupabase, color: 'text-emerald-500' },
+      { name: 'Baserow', Icon: SiBaserow, color: 'text-emerald-500' },
+      { name: 'Railway', Icon: SiRailway, color: 'text-purple-500' },
+      { name: 'Gmail', Icon: SiGmail, color: 'text-red-500' },
+      { name: 'Next.js', Icon: SiNextdotjs, color: 'text-gray-900 dark:text-white' },
+    ],
+  },
   {
     title: 'Frontend',
     items: [
@@ -65,6 +104,7 @@ export const technologyGroups = [
       { name: 'Prompt Engineering', Icon: TbSparkles, color: 'text-purple-500' },
       { name: 'AI Integration', Icon: TbSettingsSpark, color: 'text-cyan-500' },
       { name: 'OpenAI API', Icon: SiOpenapiinitiative, color: 'text-emerald-500' },
+      { name: 'Retell AI', Icon: TbMessageChatbotFilled, color: 'text-violet-500' },
       { name: 'AI Chatbots', Icon: TbMessageChatbotFilled, color: 'text-blue-500' },
     ],
   },
@@ -79,6 +119,10 @@ export const technologyGroups = [
     title: 'Data Analysis',
     items: [
       { name: 'Python', Icon: SiPython, color: 'text-blue-500' },
+      { name: 'Google Sheets', Icon: SiGooglesheets, color: 'text-emerald-600' },
+      { name: 'Web Scraping', Icon: FaSpider, color: 'text-indigo-500' },
+      { name: 'Scrapy', Icon: SiScrapy, color: 'text-emerald-500' },
+      { name: 'Selenium', Icon: SiSelenium, color: 'text-green-500' },
       { name: 'Data Visualization', Icon: SiCanvas, color: 'text-purple-500' },
       { name: 'Excel', Icon: FaRegFileExcel, color: 'text-green-600' },
     ],
@@ -94,4 +138,8 @@ export const technologyGroups = [
   },
 ]
 
-export const featuredTechnologies = technologyGroups.flatMap((group) => group.items).slice(0, 16)
+export const featuredTechnologies = [
+  ...technologyGroups.find((group) => group.title === 'AI Automation').items,
+  ...technologyGroups.find((group) => group.title === 'Featured Build Stack').items,
+  ...technologyGroups.find((group) => group.title === 'Generative AI').items,
+]

@@ -8,6 +8,14 @@ export const projects = [
     stack: ['Next.js', 'TypeScript', 'Vercel'],
   },
   {
+    title: 'SunnyBooth AI Feedback Automation',
+    status: 'Private',
+    desc: 'Automated workflow for analyzing feedback, tracking issues, sending alerts, and generating weekly AI reports.',
+    link: null,
+    img: '/sunnybooth-ai-workflow.png',
+    stack: ['n8n Automation', 'Google Gemini', 'Baserow'],
+  },
+  {
     title: 'Attack on Titan Wiki',
     status: 'Live',
     desc: 'Flutter web app for exploring characters, Titans, favorites, and a Scout quiz.',

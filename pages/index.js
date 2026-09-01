@@ -8,11 +8,11 @@ import CertItem from '../components/CertItem'
 import NavBar from '../components/NavBar'
 import Contact from '../components/Contact'
 import ScrollReveal from '../components/ScrollReveal'
+import FeaturedBuild from '../components/FeaturedBuild'
 
 export default function Home() {
   const [theme, setTheme] = useState('light')
   const [showAllCerts, setShowAllCerts] = useState(false)
-  const [selectedCert, setSelectedCert] = useState(null)
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('theme')
@@ -36,17 +36,20 @@ export default function Home() {
   const isDark = theme === 'dark'
 
   const certificateList = [
+    { title: 'Automation Specialist', issuer: 'AI Automation', src: '/sunnybooth-ai-workflow.png' },
+    { title: 'AI Workflow Engineer', issuer: 'Workflow Automation', src: '/sunnybooth-ai-workflow.png' },
     { title: 'Flutter & Dart', issuer: 'Mobile Development', src: '/flutterdartcert.jpg' },
     { title: 'Data Analytics', issuer: 'Analytics', src: '/Data Analytics Cert-1.png' },
     { title: 'Cyber Security', issuer: 'Security', src: '/Cyber Security Cert-1.png' },
     { title: 'Intellectual Property', issuer: 'IP Fundamentals', src: '/Intellectual Property Cert-1.png' },
     { title: 'Game Development', issuer: 'Game Design', src: '/Game Cert-1.png' },
   ]
+  const featuredCertificates = certificateList.slice(0, 4)
 
   const experiences = [
-    { dates: 'Jul 2026 - Present', title: 'Founder & Product Developer', company: 'SunnyBooth Web App' },
+    { dates: 'Jul 2026 - Present', title: 'Founder & AI Automation Developer', company: 'SunnyBooth Web App' },
     { dates: 'Jul 2026', title: 'BS Computer Science', company: 'La Salle University Ozamiz' },
-    { dates: 'Feb 2026 - Jun 2026', title: 'Software Developer Intern', company: 'Department of Education (DepEd) - Ozamiz City' },
+    { dates: 'Feb 2026 - Jun 2026', title: 'Software and AI Developer Intern', company: 'Department of Education (DepEd) - Ozamiz City' },
     { dates: 'Oct 2025 - Feb 2026', title: 'Quality Assurance Specialist', company: 'Global Beta Test Network (GBTN)' },
     { dates: 'Mar 2025 - May 2025', title: 'Research Documentation Specialist', company: 'KMASS: Modeling Simulation System ' },
     { dates: 'Sep 2024 - Feb 2025', title: 'Mobile Developer', company: 'Mobile App Project' },
@@ -62,14 +65,20 @@ export default function Home() {
         <Hero theme={theme} toggleTheme={toggleTheme} />
 
         <ScrollReveal id="about" className="py-10">
-          <div className="container space-y-16">
+          <div className="container">
             <section className="space-y-4">
               <h2 className={`section-title ${isDark ? 'text-white' : 'text-gray-950'}`}>About</h2>
               <p className={`max-w-2xl text-sm leading-7 sm:text-base ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                I build modern digital solutions, and these days I am focused on generative AI. I care about clean execution, clear structure, and polished user experiences that feel practical and easy to use. I enjoy turning complex problems into practical systems through clean code, strong analysis, and careful product thinking, bringing technical depth and business value to every project.
+                I turn complex and repetitive business processes into smart, reliable, and scalable automated systems. My work combines AI, workflow automation, APIs, web scraping, and data integrations using tools like n8n, Make, Zapier, GoHighLevel, Airtable, Baserow, Supabase, OpenAI, and Claude. I focus on building practical solutions that save time, streamline operations, and help businesses work smarter.
               </p>
             </section>
+          </div>
+        </ScrollReveal>
 
+        <FeaturedBuild isDark={isDark} />
+
+        <ScrollReveal className="py-10">
+          <div className="container">
             <section id="experience" className="space-y-6">
               <h2 className={`section-title ${isDark ? 'text-white' : 'text-gray-950'}`}>Experience</h2>
               <div className="space-y-8">
@@ -106,8 +115,8 @@ export default function Home() {
               </div>
 
               <div className="space-y-7">
-                {certificateList.map((cert) => (
-                  <CertItem key={cert.title} title={cert.title} issuer={cert.issuer} onClick={() => setSelectedCert(cert)} isDark={isDark} />
+                {featuredCertificates.map((cert) => (
+                  <CertItem key={cert.title} title={cert.title} issuer={cert.issuer} isDark={isDark} />
                 ))}
               </div>
             </section>
@@ -133,7 +142,6 @@ export default function Home() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h2 className="text-2xl font-light tracking-tight">All Certificates</h2>
-                  <p className={`mt-1 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Choose a certificate to preview it closer.</p>
                 </div>
                 <button
                   type="button"
@@ -146,48 +154,19 @@ export default function Home() {
               </div>
 
               <div className="mt-6 max-h-[64vh] overflow-auto pr-2">
-                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {certificateList.map((cert) => (
-                    <button
+                    <div
                       key={cert.title}
-                      type="button"
-                      onClick={() => setSelectedCert(cert)}
-                      className={`overflow-hidden rounded-xl border p-4 text-left transition hover:-translate-y-1 hover:shadow-lg ${isDark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}
+                      className={`rounded-xl border p-4 ${isDark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}
                     >
-                      <div className={`flex h-44 items-center justify-center rounded-lg ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-                        <img src={cert.src} alt={cert.title} className="h-full w-full object-contain" />
-                      </div>
-                      <div className="mt-4 space-y-1">
+                      <div className="space-y-1">
                         <p className="text-sm font-semibold">{cert.title}</p>
                         <p className="text-xs text-gray-500">{cert.issuer}</p>
                       </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {selectedCert && (
-          <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/75 px-4 py-6 backdrop-blur-sm">
-            <div className={`w-full max-w-4xl rounded-xl border p-4 shadow-2xl ${isDark ? 'border-gray-800 bg-gray-950 text-gray-100' : 'border-gray-200 bg-white text-gray-900'}`}>
-              <div className="mb-4 flex items-center justify-between gap-4">
-                <div>
-                  <h2 className="text-lg font-semibold">{selectedCert.title}</h2>
-                  <p className="text-sm text-gray-500">{selectedCert.issuer}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedCert(null)}
-                  className={`h-10 w-10 rounded-full border text-lg transition ${isDark ? 'border-gray-700 bg-gray-900 text-gray-200 hover:bg-gray-800' : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-100'}`}
-                  aria-label="Close certificate preview"
-                >
-                  X
-                </button>
-              </div>
-              <div className={`flex max-h-[72vh] items-center justify-center overflow-hidden rounded-lg ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-                <img src={selectedCert.src} alt={selectedCert.title} className="max-h-[72vh] w-full object-contain" />
               </div>
             </div>
           </div>

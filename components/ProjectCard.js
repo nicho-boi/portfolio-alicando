@@ -73,7 +73,7 @@ export default function ProjectCard({ project, isDark }) {
             </span>
           ) : (
             <span className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
-              {project.status === 'Confidential' ? 'Private project' : 'In progress'}
+              {['Private', 'Confidential'].includes(project.status) ? 'Private project' : 'In progress'}
             </span>
           )}
         </div>
