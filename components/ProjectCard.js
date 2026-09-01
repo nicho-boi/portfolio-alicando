@@ -7,6 +7,8 @@ export default function ProjectCard({ project, isDark }) {
   const openProject = (event) => {
     if (!project.link) return
 
+    if (project.link.startsWith('/')) return
+
     event.preventDefault()
 
     if (project.mobilePreview) {
@@ -29,8 +31,7 @@ export default function ProjectCard({ project, isDark }) {
   const cardProps = project.link
     ? {
         href: project.link,
-        target: '_blank',
-        rel: 'noopener noreferrer',
+        ...(project.link.startsWith('/') ? {} : { target: '_blank', rel: 'noopener noreferrer' }),
         onClick: openProject,
       }
     : {}
@@ -69,7 +70,7 @@ export default function ProjectCard({ project, isDark }) {
         <div className={`mt-auto border-t pt-4 ${borderClass}`}>
           {project.link ? (
             <span className={`inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              {project.mobilePreview ? 'Mobile Preview' : 'View Project'} <span className="transition-transform group-hover:translate-x-1">{'>'}</span>
+              {project.link === '/projects/automation-systems' ? 'View Automation Systems' : project.mobilePreview ? 'Mobile Preview' : 'View Project'} <span className="transition-transform group-hover:translate-x-1">{'>'}</span>
             </span>
           ) : (
             <span className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>

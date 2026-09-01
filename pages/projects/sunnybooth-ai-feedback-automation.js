@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const techBadges = ['n8n', 'Google Gemini', 'Claude', 'Supabase', 'Baserow', 'Railway', 'Gmail', 'Next.js']
+const techBadges = ['n8n', 'Google Gemini', 'Claude', 'Supabase', 'Baserow', 'Railway', 'Gmail', 'Next.js', 'Webhooks', 'REST APIs', 'Cron Jobs', 'Issue Tracking', 'Data Parsing', 'Sentiment Analysis', 'Email Alerts', 'AI Reporting']
 
 const workflowSteps = [
   'User Feedback',
@@ -74,7 +74,17 @@ export default function SunnyBoothCaseStudy() {
           <p className={`eyebrow ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>Workflow</p>
           <div className="space-y-3">
             <h1 className={`text-3xl font-light tracking-tight sm:text-4xl ${sectionTitle}`}>SunnyBooth AI Feedback Automation</h1>
-            <p className={`max-w-2xl text-base leading-7 ${muted}`}>AI-powered customer feedback and issue management system.</p>
+            <p className={`max-w-2xl text-base leading-7 ${muted}`}>AI-powered customer feedback and issue management system for a product that reached nearly 3,000 users in just one month.</p>
+            <div className="flex justify-start pt-2">
+              <a
+                href="https://sunnybooth.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex h-10 items-center justify-center rounded-lg px-4 text-sm font-medium transition hover:scale-[1.03] ${isDark ? 'bg-white text-gray-950' : 'bg-gray-950 text-white'}`}
+              >
+                Visit SunnyBooth {'>'}
+              </a>
+            </div>
           </div>
           <div className="flex flex-wrap gap-2">
             {techBadges.map((item) => (
@@ -152,9 +162,18 @@ export default function SunnyBoothCaseStudy() {
 
         <CaseSection title="Outcome" isDark={isDark}>
           <p>
-            The automation reduces manual feedback processing, keeps recurring bugs organized, prevents duplicate issue records, surfaces reopened and high-priority problems, converts raw feedback into actionable product insights, and provides weekly visibility into user feedback without inventing extra reporting work for the team.
+            With SunnyBooth reaching nearly 3,000 users in just one month, the automation reduces manual feedback processing, keeps recurring bugs organized, prevents duplicate issue records, surfaces reopened and high-priority problems, converts raw feedback into actionable product insights, and provides weekly visibility into user feedback without inventing extra reporting work for the team.
           </p>
         </CaseSection>
+
+        <div className="flex justify-center border-t pt-8 border-gray-200 dark:border-gray-800">
+          <a
+            href="#"
+            className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 ${isDark ? 'border-gray-800 text-gray-400 hover:bg-gray-900 hover:text-white' : 'border-gray-200 text-gray-500 hover:bg-gray-50 hover:text-gray-950'}`}
+          >
+            Back to top <span>↑</span>
+          </a>
+        </div>
       </div>
     </main>
   )

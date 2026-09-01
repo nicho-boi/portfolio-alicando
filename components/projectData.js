@@ -16,6 +16,14 @@ export const projects = [
     stack: ['n8n Automation', 'Google Gemini', 'Baserow'],
   },
   {
+    title: 'AI & Business Automation Systems',
+    status: 'Confidential',
+    desc: 'AI-powered automation suite for acquisition intelligence, CRM workflows, outreach, scheduling, and process orchestration.',
+    link: '/projects/automation-systems',
+    img: '/projects/automation-systems/baip-dashboard.png',
+    stack: ['n8n', 'GoHighLevel', 'Supabase'],
+  },
+  {
     title: 'Attack on Titan Wiki',
     status: 'Live',
     desc: 'Flutter web app for exploring characters, Titans, favorites, and a Scout quiz.',
