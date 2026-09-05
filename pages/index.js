@@ -54,8 +54,9 @@ export default function Home() {
     { dates: 'Oct 2025 - Nov 2025', title: 'Quality Assurance Specialist', company: 'Global Beta Test Network (GBTN)' },
     { dates: 'Mar 2025 - May 2025', title: 'Research Documentation Specialist', company: 'KMASS: Modeling Simulation System ' },
     { dates: 'Sep 2024 - Feb 2025', title: 'Mobile Developer', company: 'Mobile App Project' },
-    { dates: 'Jan 2022 - Jul 2024', title: 'Data Analyst & Visualization Specialist', company: 'Client-Based Projects' },
-    { dates: 'Aug 2021 - Dec 2022', title: 'Video Editor', company: 'Client-Based Video Projects' },
+    { dates: 'Apr 2022 - Jul 2026', title: 'AI Automation Business Specialist', company: 'Venturow' },
+    { dates: 'Dec 2021 - Apr 2022', title: 'Data Analyst & Visualization Specialist', company: 'Client-Based Projects' },
+    { dates: 'Aug 2021 - Dec 2021', title: 'Video Editor', company: 'Client-Based Video Projects' },
     { dates: 'Jun 2020', title: 'Hello World!', company: 'Wrote my first line of code' },
   ]
 
