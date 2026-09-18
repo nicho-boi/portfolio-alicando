@@ -36,13 +36,12 @@ export default function Home() {
   const isDark = theme === 'dark'
 
   const certificateList = [
+    { title: 'AI Fundamentals', issuer: 'AI Foundations', href: 'https://coursera.org/share/68f462d843905b6f5ec0f64d027e2b49' },
+    { title: 'Foundations of Business Intelligence', issuer: 'Business Intelligence', href: 'https://coursera.org/share/38259429138245ff5453cc1352032659' },
     { title: 'Automation Specialist', issuer: 'AI Automation', src: '/sunnybooth-ai-workflow.png' },
     { title: 'AI Workflow Engineer', issuer: 'Workflow Automation', src: '/sunnybooth-ai-workflow.png' },
     { title: 'Flutter & Dart', issuer: 'Mobile Development', src: '/flutterdartcert.jpg' },
     { title: 'Data Analytics', issuer: 'Analytics', src: '/Data Analytics Cert-1.png' },
-    { title: 'Cyber Security', issuer: 'Security', src: '/Cyber Security Cert-1.png' },
-    { title: 'Intellectual Property', issuer: 'IP Fundamentals', src: '/Intellectual Property Cert-1.png' },
-    { title: 'Game Development', issuer: 'Game Design', src: '/Game Cert-1.png' },
   ]
   const featuredCertificates = certificateList.slice(0, 4)
 
@@ -118,7 +117,7 @@ export default function Home() {
 
               <div className="space-y-7">
                 {featuredCertificates.map((cert) => (
-                  <CertItem key={cert.title} title={cert.title} issuer={cert.issuer} isDark={isDark} />
+                  <CertItem key={cert.title} title={cert.title} issuer={cert.issuer} href={cert.href} isDark={isDark} />
                 ))}
               </div>
             </section>
@@ -157,17 +156,22 @@ export default function Home() {
 
               <div className="mt-6 max-h-[64vh] overflow-auto pr-2">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {certificateList.map((cert) => (
-                    <div
+                  {certificateList.map((cert) => {
+                    const Wrapper = cert.href ? 'a' : 'div'
+
+                    return (
+                    <Wrapper
                       key={cert.title}
-                      className={`rounded-xl border p-4 ${isDark ? 'border-gray-800 bg-gray-950' : 'border-gray-200 bg-white'}`}
+                      {...(cert.href ? { href: cert.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className={`rounded-xl border p-4 transition duration-200 hover:-translate-y-0.5 hover:shadow-md ${isDark ? 'border-gray-800 bg-gray-950 hover:border-gray-700 hover:bg-gray-900' : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'}`}
                     >
                       <div className="space-y-1">
                         <p className="text-sm font-semibold">{cert.title}</p>
                         <p className="text-xs text-gray-500">{cert.issuer}</p>
                       </div>
-                    </div>
-                  ))}
+                    </Wrapper>
+                    )
+                  })}
                 </div>
               </div>
             </div>
