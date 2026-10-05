@@ -47,7 +47,7 @@ export default function Home() {
 
   const experiences = [
     { dates: 'Jul 2026 - Present', title: 'Founder & AI Automation Developer', company: 'SunnyBooth Web App' },
-    { dates: 'Jun 2026', title: 'BS Computer Science Graduate', company: 'La Salle University – Ozamiz City' },
+    { dates: 'Jun 2026', title: 'BS Computer Science', company: 'La Salle University – Ozamiz City' },
     { dates: 'Feb 2026 – May 2026', title: 'Software & AI Developer Intern', company: 'Department of Education (DepEd) – Ozamiz City' },
     { dates: 'Sep 2025 – Feb 2026', title: 'Thesis & Research', company: 'KMASS: Kitchen Modeling & Simulation System' },
     { dates: 'Sep 2024 – Aug 2025', title: 'CRM & Workflow Automation Developer', company: 'GoHighLevel Automation Projects' },
