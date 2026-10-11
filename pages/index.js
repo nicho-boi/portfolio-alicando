@@ -47,13 +47,8 @@ export default function Home() {
 
   const experiences = [
     { dates: 'Jul 2026 - Present', title: 'Founder & AI Automation Developer', company: 'SunnyBooth Web App' },
-    { dates: 'Jun 2026', title: 'BS Computer Science', company: 'La Salle University – Ozamiz City' },
-    { dates: 'Feb 2026 – May 2026', title: 'Software & AI Developer Intern', company: 'Department of Education (DepEd) – Ozamiz City' },
-    { dates: 'Sep 2025 – Feb 2026', title: 'Thesis & Research', company: 'KMASS: Kitchen Modeling & Simulation System' },
-    { dates: 'Sep 2024 – Aug 2025', title: 'CRM & Workflow Automation Developer', company: 'GoHighLevel Automation Projects' },
-    { dates: 'Sep 2024 – Aug 2025', title: 'AI Automation & Full-Stack Developer', company: 'BAIP – US-Based Client · Contractual · Confidential' },
-    { dates: 'Feb 2024 – Jul 2024', title: 'AI Automation Developer', company: 'Local Dental Clinic · Project-Based' },
-    { dates: 'Nov 2023 – Jan 2024', title: 'Workflow Automation Developer', company: 'Local Coffee Shop · Customer Feedback Automation' },
+    { dates: 'Feb 2026 – May 2026', title: 'Web Developer & AI Automation Specialist Intern', company: 'Department of Education (DepEd) – Ozamiz City' },
+    { dates: 'Sep 2023 – Aug 2025', title: 'AI Automation Specialist & Full-Stack Developer', company: 'BAIP – US-Based Client · Contractual · Confidential' },
     { dates: 'Aug 2022 – Jun 2023', title: 'Business Automation & Data Assistant', company: 'Local Coffee Shop · Part-Time' },
     { dates: 'Dec 2021 - Apr 2022', title: 'Data Analyst & Visualization Specialist', company: 'Client-Based Projects' },
     { dates: 'Aug 2021 - Dec 2021', title: 'Video Editor', company: 'Client-Based Video Projects' },
