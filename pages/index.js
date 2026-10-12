@@ -36,10 +36,10 @@ export default function Home() {
   const isDark = theme === 'dark'
 
   const certificateList = [
+    { title: 'Google AI Essentials', issuer: 'Google AI', href: 'https://coursera.org/share/880deb0c2994c82f74f6dd5c7eb116ac' },
     { title: 'AI Fundamentals', issuer: 'AI Foundations', href: 'https://coursera.org/share/68f462d843905b6f5ec0f64d027e2b49' },
     { title: 'Foundations of Business Intelligence', issuer: 'Business Intelligence', href: 'https://coursera.org/share/38259429138245ff5453cc1352032659' },
-    { title: 'Automation Specialist', issuer: 'AI Automation', src: '/sunnybooth-ai-workflow.png' },
-    { title: 'AI Workflow Engineer', issuer: 'Workflow Automation', src: '/sunnybooth-ai-workflow.png' },
+    { title: 'AI for Data Analysis', issuer: 'Data Analytics', href: 'https://coursera.org/share/0d3c5196866273f452ffdd9720bdddae' },
     { title: 'Flutter & Dart', issuer: 'Mobile Development', src: '/flutterdartcert.jpg' },
     { title: 'Data Analytics', issuer: 'Analytics', src: '/Data Analytics Cert-1.png' },
   ]
